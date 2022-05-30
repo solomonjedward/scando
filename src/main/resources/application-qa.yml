@@ -1,0 +1,53 @@
+#server
+server:
+  port: 8080
+  servlet:
+    context-path: /
+  tomcat:
+    max-swallow-size: 100MB
+
+#Database
+scando:
+  datasource:
+    jdbc-url: jdbc:postgresql://rds-postgres.cemocqtclv22.ap-south-1.rds.amazonaws.com:5432/mypostgresql
+    username: devstoriyohrds
+    password: jVZe32Xv
+    driverClassName: org.postgresql.Driver
+    minimumIdle: 2
+    maximumPoolSize: 1000
+  server:
+    host: qa.scando.world:8080
+  aws:
+    sns:
+      enabled: true
+
+
+#Spring
+spring:
+  jpa:
+    properties:
+      hibernate:
+        generate_statistics: false
+        jdbc:
+          batch_size: 30
+  application:
+    name: scando-learning-platform
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  jwt:
+    secret: a9a5d626c5f95d78d8d662a60ddf35a928e87d62f201ea017bd1d8ec4b64a0f4
+  servlet:
+    multipart:
+      max-file-size: 15MB
+      max-request-size: 15MB
+
+#Logging
+logging:
+  config: classpath:logback-qa.xml
+  file:
+    name: logs/scando.log
+
+
+
+
